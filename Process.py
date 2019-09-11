@@ -1,4 +1,4 @@
-mport numpy as np
+import numpy as np
 import pandas as pd
 import lightgbm as lgb
 import xgboost as xgb
@@ -17,6 +17,7 @@ for df in [train, test]:
 good_cols = list(train.columns) #将train中特征以列表形式表示
 # print(good_cols)
 for col in train.columns:
+    #vakue_counts用来统计出现频率，values[0]代表频率最高
     rate = train[col].value_counts(normalize=True, dropna=False).values[0]
     if rate > 0.90:
         good_cols.remove(col)
